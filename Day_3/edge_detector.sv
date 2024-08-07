@@ -1,43 +1,27 @@
-//Edge detector testbench
+// Edge Detector
 
-module day3_tb();
+module day3 (input wire clk,
+	input wire reset,
+	input wire a_i,
+	output wire rising_edge);
 
-	logic clk;
-	logic reset;
-	logic a_i;
-	logic rising_edge;
-	logic falling_edge;
-
-day3 day3_edge_det(.clk(clk),
-				.reset(reset),
-				.a_i(a_i),
-				.rising_edge(rising_edge)
-				);
-
-// Generate clock
-initial begin
-	clk = 1'b1;
-	forever #5 clk = ~clk;
-end
-
-// Stimulus
-initial begin
-	reset <= 1'b1;
-    a_i <= 1'b1;
-    @(posedge clk);
-    reset <= 1'b0;
-    @(posedge clk);
-    for (int i=0; i<32; i++) begin
-    	a_i <= $random%2;
-    	@(posedge clk);
+logic a_prev;
+int count;
+  
+always @(posedge clk) begin
+  if (reset) begin 
+		a_prev <= 0;
+  end 
+  else begin
+    //counter logic to count the number of edges
+    if (rising_edge) begin
+      count <= count+1;
     end
-  $finish();
+    a_prev <= a_i;
+  end
 end
 
-// To generate waveforms in Questasim simulator  
-initial begin
-    $dumpfile("dump.vcd"); 
-    $dumpvars;
- end
+// Rising edge when previous value = 0 and current value = 1
+assign rising_edge  = ~a_prev & a_i;
 
-endmodule : day3_tb
+endmodule : day3
