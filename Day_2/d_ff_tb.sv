@@ -44,7 +44,8 @@ initial begin
    	d_i = 1'b0;
     $finish();
 end
-  
+
+// To generate waveforms in Questasim simulator  
 initial begin
     $dumpfile("dump.vcd"); 
     $dumpvars;
