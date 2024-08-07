@@ -1,4 +1,4 @@
-// Edge Detector
+// Edge Detector and a counter to count number of edges
 
 module day3 (input wire clk,
 	input wire reset,
@@ -6,7 +6,7 @@ module day3 (input wire clk,
 	output wire rising_edge);
 
 logic a_prev;
-int count;
+int count;			//Counts number of edges
   
 always @(posedge clk) begin
   if (reset) begin 
