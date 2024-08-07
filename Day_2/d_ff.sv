@@ -1,9 +1,9 @@
 // Synchronous d-flipflop
 
 module day2(input logic clk,
-			input logic reset,
-			input logic d_i,
-			output logic q);
+		input logic reset,
+		input logic d_i,
+		output logic q);
 
 
 always @(posedge clk) begin
