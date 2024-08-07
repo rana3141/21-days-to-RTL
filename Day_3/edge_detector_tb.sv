@@ -9,11 +9,11 @@ module day3_tb();
 	logic falling_edge;
 
 day3 day3_edge_det(.clk(clk),
-				.reset(reset),
-				.a_i(a_i),
-				.rising_edge(rising_edge),
-				.falling_edge(falling_edge)
-				);
+			.reset(reset),
+			.a_i(a_i),
+			.rising_edge(rising_edge),
+			.falling_edge(falling_edge)
+			);
 
 // Generate clock
 initial begin
