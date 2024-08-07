@@ -24,7 +24,7 @@ end
 // Stimulus
 initial begin
 	reset <= 1'b1;
-    a_i <= 1'b1;
+	a_i <= 1'b1;
     @(posedge clk);
     reset <= 1'b0;
     @(posedge clk);
